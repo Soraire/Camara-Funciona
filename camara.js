@@ -30,23 +30,23 @@ const checkPermissions = async () => {
         setImage(data.uri);
         const datajson = {"dni":"44333222",
         "imagen": data.base64}
-        console.log("!wtf******")
 
-        axios.get('https://api.github.com/users/mapbox')
+       /* axios.get('https://api.github.com/users/mapbox')
   .then((response) => {
     console.log(response.data);
     console.log(response.status);
     console.log(response.statusText);
     console.log(response.headers);
     console.log(response.config);
-  });
-  
-        axios.post("http://10.152.2.113/post_json", datajson)
+  });*/
+
+        axios.post("http://localhost:/post_json", datajson)
         .then(function (response) {
           console.log(response);
           console.log("***then")
         })
         .catch(function (error) {
+          console.log("El error es" + error)
           console.log(error);
           console.log("***error")
         });
