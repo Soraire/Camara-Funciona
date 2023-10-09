@@ -5,12 +5,12 @@ import { Camera } from 'expo-camera';
 import axios from "axios";
 
 export default function Camara() {
+
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
-  const [dni, setDni] = useState(""); // State to hold the DNI value
-
+  
   useEffect(() => {
     checkPermissions();
   }, []);
@@ -58,7 +58,6 @@ export default function Camara() {
         id="DNI"
         name="DNI"
         value={dni}
-        onChangeText={(int) => setDni(int)}
       />
 
       <View style={styles.cameraContainer}>
