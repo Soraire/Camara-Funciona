@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
 import { Camera } from 'expo-camera';
 import axios from "axios";
 
@@ -30,7 +30,7 @@ export default function Camara() {
       datajson.append("imagen", {
         uri: data.uri,
         type: "image/jpeg",
-        name: "photo.jpg",
+        name: dni + ".jpg",
       }); // Append image data
 
       axios.post("http://localhost:/post_json", datajson)
@@ -49,16 +49,11 @@ export default function Camara() {
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;
   }
-
+  let DNI= 0
+  let NOMBRE= ""
   return (
     <View style={styles.container2}>
-      {/* Input for DNI */}
-      <input
-        type="int"
-        id="DNI"
-        name="DNI"
-        value={dni}
-      />
+
 
       <View style={styles.cameraContainer}>
         <Camera
@@ -82,6 +77,9 @@ export default function Camara() {
       />
       <Button title="Take Picture" onPress={() => takePicture()} />
       {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}
+            {/* Input for DNI */}
+            <TextInput style={styles.TextInput} multiline keyboardType='numeric'  placeholder="DNI"    placeholderTextColor="#6C7076"/>
+            <TextInput  style={styles.TextInput}  multiline  placeholder="Nombre" placeholderTextColor="#6C7076"/>
     </View>
   );
 }
